@@ -203,7 +203,7 @@ class V20CredExRecord(BaseExchangeRecord):
         if not payload:
             payload = self.serialize()
 
-        if session.profile.settings.get("transport.light_weight_webhook"):
+        if not session.profile.settings.get("debug.webhooks"):
             payload = LightWeightV20CredExRecordWebhook(**self.__dict__)
             payload = payload.__dict__
 
